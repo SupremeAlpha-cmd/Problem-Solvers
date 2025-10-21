@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Projects - The Problem Solvers</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="pictures/tps.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="projects-page">
+  
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">The Problem Solvers</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Projects Section -->
+  <section class="projects-page">
+  <h1>Our Projects</h1>
+  <p>Here are some of the exciting solutions we’ve been working on.</p>
+  <div class="projects-grid">
+    <div class="project-card" data-project="proj1">
+      <img src="pictures/scholars.jpg" alt="Student App">
+      <div class="project-info">
+        <h3>All-in-One Student App</h3>
+        <p>An app that provides students with resources, collaboration tools, and more.</p>
+      </div>
+    </div>
+
+    <div class="project-card" data-project="proj2">
+      <img src="pictures/project2.jpg" alt="AI Assistant">
+      <div class="project-info">
+        <h3>Campus AI Assistant</h3>
+        <p>Your smart AI companion to make campus life easier.</p>
+      </div>
+    </div>
+
+    <div class="project-card" data-project="proj3">
+      <img src="pictures/project3.jpg" alt="Health Tracker">
+      <div class="project-info">
+        <h3>Health Tracker</h3>
+        <p>Track your wellness, productivity, and health in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Project Modal -->
+  <div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="projectImage" src="" alt="">
+    <h3 id="projectTitle"></h3>
+    <p id="projectDesc"></p>
+    <div class="download-buttons">
+      <a id="playStoreBtn" href="#" target="_blank" class="btn playstore">Play Store</a>
+      <a id="iosBtn" href="#" target="_blank" class="btn ios">App Store</a>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 The Problem Solvers. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

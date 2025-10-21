@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Problem Solvers</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="pictures/tps.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">The Problem Solvers</div>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact-us.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <video autoplay muted loop class="hero-video">
+    <source src="pictures/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-content">
+    <h1>We are <span>The Problem Solvers</span></h1>
+    <p>Impacting the next generation of techies while solving real problems.</p>
+    <a href="projects.html" class="btn">See Our Projects</a>
+  </div>
+</section>
+
+<!-- About Preview -->
+<section class="about-preview">
+  <h2>Who We Are</h2>
+  <p>We are a team of six passionate students on a mission to build solutions that shape the future of technology.</p>
+  <a href="about.html" class="btn">Learn More</a>
+</section>
+
+<!-- Projects Section (Home) -->
+<section class="projects">
+  <h2>Our Projects</h2>
+  <div class="projects-carousel" id="projectsCarousel">
+    <div class="project-card" data-project="proj1">
+      <img src="pictures/scholars.jpg" alt="Student App">
+      <h3>All-in-One Student App</h3>
+    </div>
+
+    <div class="project-card" data-project="proj2">
+      <img src="pictures/project2.jpg" alt="AI Assistant">
+      <h3>Campus AI Assistant</h3>
+    </div>
+
+    <div class="project-card" data-project="proj3">
+      <img src="pictures/project3.jpg" alt="Health Tracker">
+      <h3>Health Tracker</h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- Project Modal (Shared) -->
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="projectImage" src="" alt="">
+    <h3 id="projectTitle"></h3>
+    <p id="projectDesc"></p>
+    <div class="download-buttons">
+      <a id="playStoreBtn" href="#" target="_blank" class="btn playstore">Play Store</a>
+      <a id="iosBtn" href="#" target="_blank" class="btn ios">App Store</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Team Section -->
+<section class="team">
+  <h2>Meet Our Team</h2>
+  <div class="team-carousel" id="teamCarousel">
+    <div class="team-card" data-member="member1">
+       <img src="pictures/israel.jpg" alt="Israel Irene Idemudia">
+      <h3>Israel Irene Idemudia</h3>
+      <p>Team Lead</p>
+    </div>
+    <div class="team-card" data-member="member2">
+      <img src="pictures/javin.jpg" alt="Oreoluwa Chiazor">
+      <h3>Oreoluwa Ifedinma Chiazor</h3>
+      <p>Software Engineer</p>
+    </div>
+    <div class="team-card" data-member="member3">
+      <img src="pictures/christabel.jpg" alt="Christabel Ojekwu">
+      <h3>Christabel Obianuju Ojekwu</h3>
+      <p>UI/UX Designer</p>
+    </div>
+    <div class="team-card" data-member="member4">
+      <img src="pictures/kingsley.jpg" alt="KIngsley Ogedegbe">
+      <h3>Kingsley Ogedegbe</h3>
+      <p>Backend Developer</p>
+    </div>
+    <div class="team-card" data-member="member5">
+      <img src="pictures/AKBAR 3.jpg" alt="Annabel">
+      <h3>Annabel Akbar Aigbe</h3>
+      <p>Web Developer</p>
+    </div>
+    <div class="team-card" data-member="member6">
+      <img src="pictures/STEPH 2.jpg" alt="Stephanie">
+      <h3>Stephanie Odili Mordi</h3>
+      <p>Quality Assurance Analyst</p>
+    </div>
+  </div>
+</section>
+
+<!-- Team Modal -->
+<div id="teamModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="modalImage" src="" alt="">
+    <h3 id="modalName"></h3>
+    <p id="modalRole"></p>
+    <p id="modalIntro"></p>
+    <a id="knowMoreBtn" href="#" class="know-more">Know More</a>
+  </div>
+</div>
+
+<!-- Call To Action -->
+<section class="cta">
+  <h2>Want to Collaborate?</h2>
+  <p>We’re always open to working on innovative ideas. Let’s create something impactful together.</p>
+  <a href="contact-us.html" class="btn">Contact Us</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 The Problem Solvers. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

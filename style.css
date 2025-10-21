@@ -1,0 +1,746 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: #0a0a0a;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #1e90ff;
+}
+
+/* Hamburger button (hidden by default) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0; /* middle bar disappears */
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh;
+  color: #1f1d1d;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills container without distortion */
+  transform: translate(-50%, -50%);
+  z-index: 0; /* behind content */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* optional overlay for readability */
+  z-index: 0.5;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+}
+
+.hero-content h1 span {
+  color: #1e90ff;
+  font-weight: 700;
+}
+
+.hero-content p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #1e90ff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #155f9a;
+}
+
+/* About Preview */
+.about-preview {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f4f4f4;
+}
+
+.about-preview h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+/* Highlight Section */
+.highlight {
+  padding: 3rem 5%;
+}
+
+.project-card {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.project-card img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.project-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Call to Action */
+.cta {
+  text-align: center;
+  background: #1e90ff;
+  color: #fff;
+  padding: 3rem 2rem;
+}
+
+.cta h2 {
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+  /* Hamburger shows on mobile */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Hide nav links by default */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #0a0a0a;
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    width: 200px;
+    border-radius: 5px;
+    padding: 1rem;
+    z-index: 999;
+  }
+
+  /* Show nav links when active */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Hero text smaller */
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Project card stacks vertically */
+  .project-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project-card img {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .about-preview h2,
+  .highlight h2,
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* Team Section */
+.team {
+  padding: 3rem 5%;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.team h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.team-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem;
+}
+
+.team-card {
+  flex: 0 0 250px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.team-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-card h3 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.team-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Modal overlay */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  position: relative;  
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: popUp 0.3s ease-in-out;
+}
+
+
+@keyframes popUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #1e90ff;
+}
+
+
+.modal img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.know-more {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: #1e90ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.know-more:hover {
+  background: #155f9a;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+
+/* About Hero */
+.about-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #0077ff, #00c6ff);
+  color: #fff;
+}
+.about-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.about-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Story Section */
+.about-story {
+  padding: 3rem 5%;
+  text-align: center;
+}
+.about-story h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.about-story p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Team Section */
+.about-team {
+  padding: 3rem 5%;
+}
+.about-team h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Each Member */
+.about-member {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+.about-member:hover {
+  transform: translateY(-5px);
+}
+
+/* Alternate layout: even rows image right */
+.about-member:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.about-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.about-member .info {
+  flex: 1;
+}
+
+.about-member h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #222;
+}
+.about-member .role {
+  font-weight: bold;
+  color: #0077ff;
+  margin: 0.3rem 0 1rem;
+}
+.about-member p {
+  color: #555;
+  line-height: 1.5;
+}
+
+
+/* Contact Hero */
+.contact-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #1e90ff;
+  color: #fff;
+}
+
+.contact-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f4f4f4;
+  border-radius: 10px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.contact-form button {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background: #155f9a;
+}
+
+/* Quick Actions */
+.quick-actions {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.quick-actions h2 {
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quick-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.quick-btn:hover {
+  background: #1e90ff;
+}
+
+
+
+/* PROJECTS SECTION */
+
+/* ===== Projects Section ===== */
+
+/* Projects Page Header */
+.projects-page header.navbar {
+  background: linear-gradient(to right, #0a0a0a, #101618);
+}
+
+.projects-page header.navbar .logo,
+.projects-page header.navbar a {
+  color: #ffffff;
+}
+
+.projects, .projects-page {
+  padding: 3rem 5%;
+  text-align: center;
+}
+
+.projects h2, .projects-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.projects p, .projects-page p {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Home page carousel */
+.projects-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+}
+
+.projects-carousel .project-card {
+  flex: 0 0 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.projects-carousel .project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Projects page vertical grid */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.projects-grid .project-card {
+  display: flex;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  width: 100%;
+  max-width: 800px;
+}
+
+.projects-grid .project-card:hover {
+  transform: translateY(-5px);
+}
+
+.projects-grid .project-card img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+
+.project-info {
+  padding: 1rem;
+  text-align: left;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: flex-start;
+}
+
+.download-buttons .btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn.playstore { background: #34a853; }
+.btn.ios { background: #000; }
+
+
+/* ===== Sub-Nav (like About page contacts nav) ===== */
+/* Sub Navigation */
+.sub-navbar {
+  background: #f4f4f4;
+  padding: 0.5rem 5%;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 70px; /* height of main navbar */
+  z-index: 999;
+}
+
+.sub-navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.sub-navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 8px;
+}
+
+.sub-navbar a:hover {
+  background: #1e90ff;
+  color: #fff;
+}
+
+.sub-navbar a.active {
+  background: #1e90ff;
+  color: #fff;
+}
