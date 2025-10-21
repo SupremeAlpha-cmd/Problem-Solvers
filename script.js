@@ -1,169 +1,141 @@
-/* ================= TEAM SECTION ================= */
-const teamCards = document.querySelectorAll(".team-card");
-const teamModal = document.getElementById("teamModal");
-const teamCloseBtn = teamModal?.querySelector(".close");
-const modalImage = document.getElementById("modalImage");
-const modalName = document.getElementById("modalName");
-const modalRole = document.getElementById("modalRole");
-const modalIntro = document.getElementById("modalIntro");
-const knowMoreBtn = document.getElementById("knowMoreBtn");
 
-const teamData = {
-  member1: {
-    img: "pictures/israel.jpg",
-    name: "Israel Irene Idemudia",
-    role: "Team Lead",
-    intro: "Bent on organising and making sure every project works perfectly well and moves smoothly. Works with the team members at all times. The chief backend developer that makes sure the unforseen side of every project runs smoothly.",
-    link: "about.html#member1",
-  },
-  member2: {
-    img: "pictures/javin.jpg",
-    name: "Oreoluwa Ifedinma Chiazor",
-    role: "Software Engineer",
-    intro: " Designs, develops, tests, and maintains software systems by applying engineering principles to solve user problem",
-    link: "about.html#member2",
-  },
-  member3: {
-    img: "pictures/christabel.jpg",
-    name: "Christabel Obianuju Ojekwu",
-    role: "UI/UX Designer",
-    intro: "Designs and build apps frameworks that are mind blowing. Bent on giving users the best experience (UX) while using the app with simplified, wonderful and eye catching designs(UI)",
-    link: "about.html#member3",
-  },
-  member4: {
-    img: "pictures/kingsley.jpg",
-    name: "Kingsley Ogedegbe",
-    role: "Backend Developer",
-    intro: "Builds and maintains the unseen server-side components of the project, handling server-side logic, databases, and APIs to ensure the application functions correctly and securely behind the scenes",
-    link: "about.html#member4",
-  },
-  member5: {
-    img: "pictures/AKBAR 3.jpg",
-    name: "Annabel Akbar Aigbe",
-    role: "Web Developer",
-    intro: "Responsible for building and designing websites that are top notch and with a touch of wonderful UI/UX",
-    link: "about.html#member5",
-  },
-  member6: {
-    img: "pictures/STEPH 2.jpg",
-    name: "Stephanie Odili Mordi",
-    role: "Quality Assurance Analyst",
-    intro: "Responsible for testing, analysing projects, ready to make your project 99% standard and world class ",
-    link: "about.html#member6",
-  },
-};
+document.addEventListener('DOMContentLoaded', () => {
+    const projects = [
+        {
+            id: 'proj1',
+            image: 'assets/logo.png',
+            title: 'All-in-One Student App',
+            description: 'An all-in-one student app designed to cater to the needs of students, providing them with resources, collaboration tools, and much more.',
+            link: 'https://skholar.vercel.app',
+            playStore: '#',
+            appStore: '#'
+        },
+       
+    ];
 
-const teamCarousel = document.getElementById("teamCarousel");
+    const teamMembers = [
+        {
+            id: 'member1',
+            image: 'assets/israel.jpg',
+            name: 'Israel Irene Idemudia',
+            role: 'Team Lead',
+            intro: 'Israel is a passionate leader with a vision for the future of technology.'
+        },
+        {
+            id: 'member2',
+            image: 'assets/javin.jpg',
+            name: 'Oreoluwa Ifedinma Chiazor',
+            role: 'Software Engineer',
+            intro: 'Oreoluwa is a skilled software engineer who loves to solve complex problems.'
+        },
+        {
+            id: 'member3',
+            image: 'assets/christabel.jpg',
+            name: 'Christabel Obianuju Ojekwu',
+            role: 'UI/UX Designer',
+            intro: 'Christabel is a creative UI/UX designer who is passionate about creating user-friendly interfaces.'
+        },
+        {
+            id: 'member4',
+            image: 'assets/kingsley.jpg',
+            name: 'Kingsley Ogedegbe',
+            role: 'Backend Developer',
+            intro: 'Kingsley is a backend developer who is passionate about building scalable and efficient systems.'
+        },
+        {
+            id: 'member5',
+            image: 'assets/AKBAR 3.jpg',
+            name: 'Annabel Akbar Aigbe',
+            role: 'Web Developer',
+            intro: 'Annabel is a web developer who is passionate about creating beautiful and responsive websites.'
+        },
+        {
+            id: 'member6',
+            image: 'assets/STEPH 2.jpg',
+            name: 'Stephanie Odili Mordi',
+            role: 'Quality Assurance Analyst',
+            intro: 'Stephanie is a quality assurance analyst who is passionate about ensuring the quality of our products.'
+        }
+    ];
 
-function autoScrollTeam() {
-  if (!teamCarousel) return;
-  if (
-    teamCarousel.scrollLeft + teamCarousel.clientWidth >=
-    teamCarousel.scrollWidth
-  ) {
-    teamCarousel.scrollTo({ left: 0, behavior: "smooth" });
-  } else {
-    teamCarousel.scrollBy({ left: 250, behavior: "smooth" });
-  }
-}
-setInterval(autoScrollTeam, 3000);
+    const projectsCarousel = document.getElementById('projectsCarousel');
+    const teamCarousel = document.getElementById('teamCarousel');
+    const projectModal = document.getElementById('projectModal');
+    const teamModal = document.getElementById('teamModal');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-teamCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const memberId = card.getAttribute("data-member");
-    const member = teamData[memberId];
-
-    modalImage.src = member.img;
-    modalName.textContent = member.name;
-    modalRole.textContent = member.role;
-    modalIntro.textContent = member.intro;
-    knowMoreBtn.href = member.link;
-
-    teamModal.style.display = "flex";
-    requestAnimationFrame(() => teamModal.classList.add("show"));
-  });
-});
-
-teamCloseBtn?.addEventListener("click", () => {
-  teamModal.classList.remove("show");
-  setTimeout(() => (teamModal.style.display = "none"), 300);
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target === teamModal) {
-    teamModal.classList.remove("show");
-    setTimeout(() => (teamModal.style.display = "none"), 300);
-  }
-});
-
-/* ================= PROJECTS SECTION ================= */
-// Projects cards (both home & projects page)
-const projectCards = document.querySelectorAll(".project-card");
-const projectModal = document.getElementById("projectModal");
-const projectImage = document.getElementById("projectImage");
-const projectTitle = document.getElementById("projectTitle");
-const projectDesc = document.getElementById("projectDesc");
-const playStoreBtn = document.getElementById("playStoreBtn");
-const iosBtn = document.getElementById("iosBtn");
-const projectClose = projectModal.querySelector(".close");
-
-const projects = {
-  proj1: {
-    img: "pictures/scholars.jpg",
-    title: "All-in-One Student App",
-    desc: "An app that provides students with resources, collaboration tools, and more.",
-    play: "https://play.google.com/store/apps/details?id=yourapp",
-    ios: "https://apps.apple.com/app/yourapp",
-  },
-  proj2: {
-    img: "pictures/project2.jpg",
-    title: "Campus AI Assistant",
-    desc: "Your smart AI companion to make campus life easier.",
-    play: "#",
-    ios: "#",
-  },
-  proj3: {
-    img: "pictures/project3.jpg",
-    title: "Health Tracker",
-    desc: "Track your wellness, productivity, and health in one place.",
-    play: "#",
-    ios: "#",
-  },
-};
-
-projectCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const id = card.dataset.project;
-    const project = projects[id];
-
-    projectImage.src = project.img;
-    projectTitle.textContent = project.title;
-    projectDesc.textContent = project.desc;
-
-    if (document.body.classList.contains("projects-page")) {
-      // Projects page: show download buttons
-      playStoreBtn.style.display = "inline-block";
-      iosBtn.style.display = "inline-block";
-      playStoreBtn.href = project.play;
-      iosBtn.href = project.ios;
-    } else {
-      // Home page: hide download buttons, add Know More
-      playStoreBtn.style.display = "none";
-      iosBtn.style.display = "none";
-
-      let knowMoreBtn = document.createElement("a");
-      knowMoreBtn.className = "know-more";
-      knowMoreBtn.href = "projects.html#" + id;
-      knowMoreBtn.textContent = "Know More";
-      projectModal.querySelector(".modal-content").appendChild(knowMoreBtn);
-
-      projectClose.addEventListener("click", () => knowMoreBtn.remove());
-      window.addEventListener("click", (e) => {
-        if (e.target === projectModal) knowMoreBtn.remove();
-      });
+    if (projectsCarousel) {
+        projects.forEach(project => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            projectCard.dataset.project = project.id;
+            projectCard.innerHTML = `
+                <img src="${project.image}" alt="${project.title}">
+                <h3>${project.title}</h3>
+            `;
+            projectCard.addEventListener('click', () => openProjectModal(project));
+            projectsCarousel.appendChild(projectCard);
+        });
     }
 
-    projectModal.style.display = "flex";
-    requestAnimationFrame(() => projectModal.classList.add("show"));
-  });
+    if (teamCarousel) {
+        teamMembers.forEach(member => {
+            const teamCard = document.createElement('div');
+            teamCard.className = 'team-card';
+            teamCard.dataset.member = member.id;
+            teamCard.innerHTML = `
+                <img src="${member.image}" alt="${member.name}">
+                <h3>${member.name}</h3>
+                <p>${member.role}</p>
+            `;
+            teamCard.addEventListener('click', () => openTeamModal(member));
+            teamCarousel.appendChild(teamCard);
+        });
+    }
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
+
+    function openProjectModal(project) {
+        if (projectModal) {
+            document.getElementById('projectImage').src = project.image;
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectDesc').textContent = project.description;
+            document.getElementById('playStoreBtn').href = project.playStore;
+            document.getElementById('iosBtn').href = project.appStore;
+            projectModal.style.display = 'flex';
+        }
+    }
+
+    function openTeamModal(member) {
+        if (teamModal) {
+            document.getElementById('modalImage').src = member.image;
+            document.getElementById('modalName').textContent = member.name;
+            document.getElementById('modalRole').textContent = member.role;
+            document.getElementById('modalIntro').textContent = member.intro;
+            teamModal.style.display = 'flex';
+        }
+    }
+
+    window.addEventListener('click', (event) => {
+        if (event.target === projectModal) {
+            projectModal.style.display = 'none';
+        }
+        if (event.target === teamModal) {
+            teamModal.style.display = 'none';
+        }
+    });
+
+    const closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            if (projectModal) projectModal.style.display = 'none';
+            if (teamModal) teamModal.style.display = 'none';
+        });
+    });
 });
