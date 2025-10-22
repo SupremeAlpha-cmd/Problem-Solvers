@@ -73,14 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
             projectCard.innerHTML = `
                 <img src="${project.image}" alt="${project.title}">
                 <h3>${project.title}</h3>
+                <a href="projects.html" class="btn">Know More</a>
             `;
-            projectCard.addEventListener('click', () => openProjectModal(project));
+            projectCard.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'A') {
+                    openProjectModal(project)
+                }
+            });
             projectsCarousel.appendChild(projectCard);
         });
     }
 
     if (teamCarousel) {
-        teamMembers.forEach(member => {
+        // Duplicate team members for seamless scrolling
+        const teamMembersDoubled = [...teamMembers, ...teamMembers];
+        teamMembersDoubled.forEach(member => {
             const teamCard = document.createElement('div');
             teamCard.className = 'team-card';
             teamCard.dataset.member = member.id;
@@ -118,6 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('modalName').textContent = member.name;
             document.getElementById('modalRole').textContent = member.role;
             document.getElementById('modalIntro').textContent = member.intro;
+            const knowMoreBtn = document.getElementById('knowMoreBtn');
+            knowMoreBtn.href = `about.html#${member.id}`;
             teamModal.style.display = 'flex';
         }
     }
