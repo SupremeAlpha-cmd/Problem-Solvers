@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/logo.png',
             title: 'All-in-One Student App',
             description: 'An all-in-one student app designed to cater to the needs of students, providing them with resources, collaboration tools, and much more.',
-            link: 'https://skholar.vercel.app',
+            link: 'projects.html',
             playStore: '#',
             appStore: '#'
         },
@@ -19,42 +19,48 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/israel.jpg',
             name: 'Israel Irene Idemudia',
             role: 'Team Lead',
-            intro: 'Israel is a passionate leader with a vision for the future of technology.'
+            intro: 'Israel is a passionate leader with a vision for the future of technology.',
+            link: 'about.html#member1'
         },
         {
             id: 'member2',
             image: 'assets/javin.jpg',
             name: 'Oreoluwa Ifedinma Chiazor',
             role: 'Software Engineer',
-            intro: 'Oreoluwa is a skilled software engineer who loves to solve complex problems.'
+            intro: 'Oreoluwa is a skilled software engineer who loves to solve complex problems.',
+            link: 'about.html#member2'
         },
         {
             id: 'member3',
             image: 'assets/christabel.jpg',
             name: 'Christabel Obianuju Ojekwu',
             role: 'UI/UX Designer',
-            intro: 'Christabel is a creative UI/UX designer who is passionate about creating user-friendly interfaces.'
+            intro: 'Christabel is a creative UI/UX designer who is passionate about creating user-friendly interfaces.',
+            link: 'about.html#member3'
         },
         {
             id: 'member4',
             image: 'assets/kingsley.jpg',
             name: 'Kingsley Ogedegbe',
             role: 'Backend Developer',
-            intro: 'Kingsley is a backend developer who is passionate about building scalable and efficient systems.'
+            intro: 'Kingsley is a backend developer who is passionate about building scalable and efficient systems.',
+            link: 'about.html#member4'
         },
         {
             id: 'member5',
             image: 'assets/AKBAR 3.jpg',
             name: 'Annabel Akbar Aigbe',
             role: 'Web Developer',
-            intro: 'Annabel is a web developer who is passionate about creating beautiful and responsive websites.'
+            intro: 'Annabel is a web developer who is passionate about creating beautiful and responsive websites.',
+            link: 'about.html#member5'
         },
         {
             id: 'member6',
             image: 'assets/STEPH 2.jpg',
             name: 'Stephanie Odili Mordi',
             role: 'Quality Assurance Analyst',
-            intro: 'Stephanie is a quality assurance analyst who is passionate about ensuring the quality of our products.'
+            intro: 'Stephanie is a quality assurance analyst who is passionate about ensuring the quality of our products.',
+            link: 'about.html#member6'
         }
     ];
 
@@ -73,19 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
             projectCard.innerHTML = `
                 <img src="${project.image}" alt="${project.title}">
                 <h3>${project.title}</h3>
-                <a href="projects.html" class="btn">Know More</a>
             `;
-            projectCard.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'A') {
-                    openProjectModal(project)
-                }
-            });
+            projectCard.addEventListener('click', () => openProjectModal(project));
             projectsCarousel.appendChild(projectCard);
         });
     }
 
     if (teamCarousel) {
-        // Duplicate team members for seamless scrolling
         const teamMembersDoubled = [...teamMembers, ...teamMembers];
         teamMembersDoubled.forEach(member => {
             const teamCard = document.createElement('div');
@@ -113,8 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('projectImage').src = project.image;
             document.getElementById('projectTitle').textContent = project.title;
             document.getElementById('projectDesc').textContent = project.description;
-            document.getElementById('playStoreBtn').href = project.playStore;
-            document.getElementById('iosBtn').href = project.appStore;
+            document.getElementById('projectKnowMoreBtn').href = project.link;
             projectModal.style.display = 'flex';
         }
     }
@@ -125,8 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('modalName').textContent = member.name;
             document.getElementById('modalRole').textContent = member.role;
             document.getElementById('modalIntro').textContent = member.intro;
-            const knowMoreBtn = document.getElementById('knowMoreBtn');
-            knowMoreBtn.href = `about.html#${member.id}`;
+            document.getElementById('knowMoreBtn').href = member.link;
             teamModal.style.display = 'flex';
         }
     }

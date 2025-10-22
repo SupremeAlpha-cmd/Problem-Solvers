@@ -296,6 +296,16 @@ footer {
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
 }
 
 .team-card {
