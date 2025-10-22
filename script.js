@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const projects = [
         {
@@ -114,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('projectTitle').textContent = project.title;
             document.getElementById('projectDesc').textContent = project.description;
             document.getElementById('projectKnowMoreBtn').href = project.link;
-            projectModal.style.display = 'flex';
+            projectModal.classList.add('show');
         }
     }
 
@@ -125,24 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('modalRole').textContent = member.role;
             document.getElementById('modalIntro').textContent = member.intro;
             document.getElementById('knowMoreBtn').href = member.link;
-            teamModal.style.display = 'flex';
+            teamModal.classList.add('show');
         }
     }
 
+    function closeModal() {
+        if (projectModal) projectModal.classList.remove('show');
+        if (teamModal) teamModal.classList.remove('show');
+    }
+
     window.addEventListener('click', (event) => {
-        if (event.target === projectModal) {
-            projectModal.style.display = 'none';
-        }
-        if (event.target === teamModal) {
-            teamModal.style.display = 'none';
+        if (event.target === projectModal || event.target === teamModal) {
+            closeModal();
         }
     });
 
     const closeButtons = document.querySelectorAll('.close');
     closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (projectModal) projectModal.style.display = 'none';
-            if (teamModal) teamModal.style.display = 'none';
-        });
+        button.addEventListener('click', closeModal);
     });
 });
