@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (teamMembers.length > 0) {
                 populateTeam(teamMembers);
-                populateAboutTeam(teamMembers); 
+                populateAboutTeam(teamMembers);
             }
 
         } catch (error) {
@@ -120,11 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const teamContainer = teamCarousel.parentElement;
             const prevBtn = teamContainer.querySelector('.prev');
             const nextBtn = teamContainer.querySelector('.next');
-            
+
             let cardWidth = 0;
             const firstCard = teamCarousel.querySelector('.carousel-card');
             if (firstCard) {
-                cardWidth = firstCard.offsetWidth + 16; 
+                cardWidth = firstCard.offsetWidth + 16;
             }
 
             let scrollInterval;
@@ -142,11 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(scrollInterval);
             };
 
-            if(prevBtn && nextBtn){
+            if (prevBtn && nextBtn) {
                 prevBtn.addEventListener('click', () => {
                     teamCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
                 });
-    
+
                 nextBtn.addEventListener('click', () => {
                     teamCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
                 });
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projectModal.querySelector('#projectDesc').textContent = project.description;
             const knowMoreBtn = projectModal.querySelector('#projectKnowMoreBtn');
             if (knowMoreBtn) {
-                 knowMoreBtn.href = `projects.html#${project.id}`;
+                knowMoreBtn.href = `projects.html#${project.id}`;
             }
             projectModal.classList.add('show');
         }
@@ -190,6 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const knowMoreBtn = teamModal.querySelector('#knowMoreBtn');
             if (knowMoreBtn) {
                 knowMoreBtn.href = `about.html#${member.id}`;
+                function openTeamModal(member) {
+                    if (teamModal) {
+                        // ... (code to populate the modal)
+                        const knowMoreBtn = teamModal.querySelector('#knowMoreBtn');
+                        if (knowMoreBtn) {
+                            knowMoreBtn.href = `about.html#${member.id}`;
+                        }
+                        teamModal.classList.add('show');
+                    }
+                }
             }
             teamModal.classList.add('show');
         }

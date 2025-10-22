@@ -708,6 +708,29 @@ footer {
 .btn.ios { background: #000; }
 .btn.website { background: #1e90ff; }
 
+@media (max-width: 768px) {
+  .projects-grid .project-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .projects-grid .project-card img {
+    width: 100%;
+    height: 200px; /* Adjust height for mobile */
+    border-radius: 12px 12px 0 0; /* Adjust border radius */
+  }
+
+  .project-info {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .download-buttons {
+    justify-content: center;
+  }
+}
+
 
 /* ===== Sub-Nav (like About page contacts nav) ===== */
 /* Sub Navigation */
