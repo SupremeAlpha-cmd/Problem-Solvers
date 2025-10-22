@@ -70,10 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
+    // Populate Projects Carousel
     if (projectsCarousel) {
         projects.forEach(project => {
             const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
+            projectCard.className = 'carousel-card';
             projectCard.dataset.project = project.id;
             projectCard.innerHTML = `
                 <img src="${project.image}" alt="${project.title}">
@@ -84,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Populate Team Carousel
     if (teamCarousel) {
-        const teamMembersDoubled = [...teamMembers, ...teamMembers];
-        teamMembersDoubled.forEach(member => {
+        teamMembers.forEach(member => {
             const teamCard = document.createElement('div');
-            teamCard.className = 'team-card';
+            teamCard.className = 'carousel-card'; 
             teamCard.dataset.member = member.id;
             teamCard.innerHTML = `
                 <img src="${member.image}" alt="${member.name}">
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Menu Toggle
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -107,23 +109,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Modal Functions
     function openProjectModal(project) {
         if (projectModal) {
-            document.getElementById('projectImage').src = project.image;
-            document.getElementById('projectTitle').textContent = project.title;
-            document.getElementById('projectDesc').textContent = project.description;
-            document.getElementById('projectKnowMoreBtn').href = project.link;
+            projectModal.querySelector('#projectImage').src = project.image;
+            projectModal.querySelector('#projectTitle').textContent = project.title;
+            projectModal.querySelector('#projectDesc').textContent = project.description;
+            projectModal.querySelector('#projectKnowMoreBtn').href = project.link;
             projectModal.classList.add('show');
         }
     }
 
     function openTeamModal(member) {
         if (teamModal) {
-            document.getElementById('modalImage').src = member.image;
-            document.getElementById('modalName').textContent = member.name;
-            document.getElementById('modalRole').textContent = member.role;
-            document.getElementById('modalIntro').textContent = member.intro;
-            document.getElementById('knowMoreBtn').href = member.link;
+            teamModal.querySelector('#modalImage').src = member.image;
+            teamModal.querySelector('#modalName').textContent = member.name;
+            teamModal.querySelector('#modalRole').textContent = member.role;
+            teamModal.querySelector('#modalIntro').textContent = member.intro;
+            teamModal.querySelector('#knowMoreBtn').href = member.link;
             teamModal.classList.add('show');
         }
     }
@@ -139,8 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(button => {
+    document.querySelectorAll('.close').forEach(button => {
         button.addEventListener('click', closeModal);
+    });
+
+    // Carousel Navigation
+    const carousels = document.querySelectorAll('.carousel-container');
+    carousels.forEach(container => {
+        const carousel = container.querySelector('.carousel');
+        const prevBtn = container.querySelector('.prev');
+        const nextBtn = container.querySelector('.next');
+        const cardWidth = carousel.querySelector('.carousel-card').offsetWidth;
+
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
     });
 });

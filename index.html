@@ -32,41 +32,48 @@
   <a href="about.html" class="btn">Learn More</a>
 </section>
 
-<!-- Projects Section (Home) -->
-<section class="projects" role="region" aria-labelledby="projects-heading">
-  <h2 id="projects-heading">Our Projects</h2>
-  <div class="projects-carousel" id="projectsCarousel">
-    <!-- Project cards will be injected here by JavaScript -->
-  </div>
+<!-- Projects Section -->
+<section class="carousel-section" role="region" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Our Projects</h2>
+    <div class="carousel-container">
+        <button class="prev" aria-label="Previous project">&lt;</button>
+        <div class="carousel" id="projectsCarousel">
+            <!-- Project cards will be injected here by JavaScript -->
+        </div>
+        <button class="next" aria-label="Next project">&gt;</button>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="carousel-section" role="region" aria-labelledby="team-heading">
+    <h2 id="team-heading">Meet Our Team</h2>
+    <div class="carousel-container">
+        <button class="prev" aria-label="Previous team member">&lt;</button>
+        <div class="carousel" id="teamCarousel">
+            <!-- Team cards will be injected here by JavaScript -->
+        </div>
+        <button class="next" aria-label="Next team member">&gt;</button>
+    </div>
 </section>
 
 
-<!-- Project Modal (Shared) -->
+<!-- Project Modal -->
 <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
   <div class="modal-content">
     <span class="close" role="button" aria-label="close">&times;</span>
     <img id="projectImage" src="" alt="">
-    <h3 id="project-modal-title"></h3>
+    <h3 id="projectTitle"></h3>
     <p id="projectDesc"></p>
     <a id="projectKnowMoreBtn" href="#" class="know-more">Know More</a>
   </div>
 </div>
-
-
-<!-- Team Section -->
-<section class="team" role="region" aria-labelledby="team-heading">
-  <h2 id="team-heading">Meet Our Team</h2>
-  <div class="team-carousel" id="teamCarousel">
-    <!-- Team cards will be injected here by JavaScript -->
-  </div>
-</section>
 
 <!-- Team Modal -->
 <div id="teamModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="team-modal-title">
   <div class="modal-content">
     <span class="close" role="button" aria-label="close">&times;</span>
     <img id="modalImage" src="" alt="">
-    <h3 id="team-modal-title"></h3>
+    <h3 id="modalName"></h3>
     <p id="modalRole"></p>
     <p id="modalIntro"></p>
     <a id="knowMoreBtn" href="#" class="know-more">Know More</a>
