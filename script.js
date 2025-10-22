@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projects.forEach(project => {
                 const projectCard = document.createElement('div');
                 projectCard.className = 'project-card';
+                projectCard.id = project.id;
                 projectCard.innerHTML = `
                     <img src="${project.image}" alt="${project.title}">
                     <div class="project-info">
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projectModal.querySelector('#projectDesc').textContent = project.description;
             const knowMoreBtn = projectModal.querySelector('#projectKnowMoreBtn');
             if (knowMoreBtn) {
-                 knowMoreBtn.href = project.websiteUrl;
+                 knowMoreBtn.href = `projects.html#${project.id}`;
             }
             projectModal.classList.add('show');
         }
@@ -186,7 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
             teamModal.querySelector('#modalName').textContent = member.name;
             teamModal.querySelector('#modalRole').textContent = member.role;
             teamModal.querySelector('#modalIntro').textContent = member.intro;
-            teamModal.querySelector('#knowMoreBtn').href = `#`; // Link to about section
+            const knowMoreBtn = teamModal.querySelector('#knowMoreBtn');
+            if (knowMoreBtn) {
+                knowMoreBtn.href = `about.html#${member.id}`;
+            }
             teamModal.classList.add('show');
         }
     }
