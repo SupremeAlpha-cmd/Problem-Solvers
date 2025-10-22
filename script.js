@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/logo.png',
             title: 'Skholar',
             description: 'An all-in-one student app designed to cater to the needs of students, providing them with resources, collaboration tools, and much more.',
-            link: 'projects.html',
-            playStore: '#',
-            appStore: '#'
+            playStoreUrl: 'https://play.google.com/store',
+            appStoreUrl: 'https://www.apple.com/app-store/',
+            websiteUrl: 'https://skholar.vercel.app'
         },
        
     ];
@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const projectsCarousel = document.getElementById('projectsCarousel');
     const teamCarousel = document.getElementById('teamCarousel');
+    const projectsGrid = document.getElementById('projects-grid');
     const projectModal = document.getElementById('projectModal');
     const teamModal = document.getElementById('teamModal');
     const menuToggle = document.getElementById('menuToggle');
@@ -82,6 +83,27 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             projectCard.addEventListener('click', () => openProjectModal(project));
             projectsCarousel.appendChild(projectCard);
+        });
+    }
+
+    // Populate Projects Grid
+    if (projectsGrid) {
+        projects.forEach(project => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            projectCard.innerHTML = `
+                <img src="${project.image}" alt="${project.title}">
+                <div class="project-info">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="download-buttons">
+                        <a href="${project.playStoreUrl}" class="btn playstore" target="_blank">Play Store</a>
+                        <a href="${project.appStoreUrl}" class="btn ios" target="_blank">App Store</a>
+                        <a href="${project.websiteUrl}" class="btn website" target="_blank">Website</a>
+                    </div>
+                </div>
+            `;
+            projectsGrid.appendChild(projectCard);
         });
     }
 
