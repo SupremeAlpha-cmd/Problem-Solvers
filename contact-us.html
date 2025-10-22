@@ -20,10 +20,10 @@
   <!-- Contact Form -->
   <section class="contact-form" role="region" aria-labelledby="contact-form-heading">
     <h2 id="contact-form-heading" style="display: none;">Contact Form</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required aria-label="Your Name">
-      <input type="email" placeholder="Your Email" required aria-label="Your Email">
-      <textarea placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+    <form action="https://formspree.io/f/xpwygqwv" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+      <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+      <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
   </section>
@@ -40,7 +40,6 @@
 
   <div w3-include-html="footer.html"></div>
 
-  <script src="script.js"></script>
   <script src="include.js"></script>
 </body>
 </html>
