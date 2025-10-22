@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $recipient = "your_email@example.com"; // <<< REPLACE WITH YOUR EMAIL ADDRESS
+    $recipient = "theproblemsolvers2.0@gmail.com"; 
     $subject = "New contact from $name";
 
     $email_content = "Name: $name\n";
