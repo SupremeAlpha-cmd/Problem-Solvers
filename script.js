@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/israel.jpg',
             name: 'Israel Irene Idemudia',
             role: 'Team Lead',
-            intro: 'Israel is a passionate leader with a vision for the future of technology.',
+            intro: 'The strategic mind behind our projects, Israel leads with a passion for backend development and data, always seeing the bigger picture.',
             link: 'about.html#member1'
         },
         {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/javin.jpg',
             name: 'Oreoluwa Ifedinma Chiazor',
             role: 'Software Engineer',
-            intro: 'Oreoluwa is a skilled software engineer who loves to solve complex problems.',
+            intro: 'Our versatile problem-solver, Oreoluwa crafts seamless experiences across web and mobile platforms with her broad engineering expertise.',
             link: 'about.html#member2'
         },
         {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/christabel.jpg',
             name: 'Christabel Obianuju Ojekwu',
             role: 'UI/UX Designer',
-            intro: 'Christabel is a creative UI/UX designer who is passionate about creating user-friendly interfaces.',
+            intro: 'The creative force of our team, Christabel blends artistry with user-centric design to create intuitive and beautiful digital experiences.',
             link: 'about.html#member3'
         },
         {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/kingsley.jpg',
             name: 'Kingsley Ogedegbe',
             role: 'Backend Developer',
-            intro: 'Kingsley is a backend developer who is passionate about building scalable and efficient systems.',
+            intro: 'The architect of our digital backbone, Kingsley specializes in building the scalable and efficient server-side systems that power our apps.',
             link: 'about.html#member4'
         },
         {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/AKBAR 3.jpg',
             name: 'Annabel Akbar Aigbe',
             role: 'Web Developer',
-            intro: 'Annabel is a web developer who is passionate about creating beautiful and responsive websites.',
+            intro: 'Our front-end specialist, Annabel brings designs to life by creating beautiful, responsive, and interactive websites that captivate users.',
             link: 'about.html#member5'
         },
         {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/STEPH 2.jpg',
             name: 'Stephanie Odili Mordi',
             role: 'Quality Assurance Analyst',
-            intro: 'Stephanie is a quality assurance analyst who is passionate about ensuring the quality of our products.',
+            intro: 'Our guardian of quality, Stephanie meticulously tests our products to ensure they are bug-free, reliable, and meet the highest standards.',
             link: 'about.html#member6'
         }
     ];
@@ -87,9 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate Team Carousel
     if (teamCarousel) {
-        teamMembers.forEach(member => {
+        // To create a seamless scroll, we duplicate the team members
+        const duplicatedTeamMembers = [...teamMembers, ...teamMembers];
+
+        duplicatedTeamMembers.forEach(member => {
             const teamCard = document.createElement('div');
-            teamCard.className = 'carousel-card'; 
+            teamCard.className = 'carousel-card';
             teamCard.dataset.member = member.id;
             teamCard.innerHTML = `
                 <img src="${member.image}" alt="${member.name}">
@@ -99,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             teamCard.addEventListener('click', () => openTeamModal(member));
             teamCarousel.appendChild(teamCard);
         });
+
 
         // Team carousel specific logic
         const teamContainer = teamCarousel.parentElement;
