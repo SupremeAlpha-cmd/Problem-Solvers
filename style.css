@@ -258,24 +258,17 @@ footer {
 
 .carousel-container {
     position: relative;
+    overflow: hidden;
 }
 
 .carousel {
     display: flex;
     gap: 1rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
     padding: 1rem;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.carousel::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
 }
 
 #teamCarousel {
-    animation: scroll 30s linear infinite;
+    animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
