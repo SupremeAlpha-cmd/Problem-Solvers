@@ -258,26 +258,20 @@ footer {
 
 .carousel-container {
     position: relative;
-    overflow: hidden;
 }
 
 .carousel {
     display: flex;
     gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
     padding: 1rem;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-#teamCarousel {
-    animation: scroll 40s linear infinite;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-266px * 6));
-    }
+.carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 .carousel-card {

@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate Team Carousel
     if (teamCarousel) {
-        // To create a seamless scroll, we duplicate the team members
         const duplicatedTeamMembers = [...teamMembers, ...teamMembers];
 
         duplicatedTeamMembers.forEach(member => {
@@ -103,12 +102,25 @@ document.addEventListener('DOMContentLoaded', () => {
             teamCarousel.appendChild(teamCard);
         });
 
-
-        // Team carousel specific logic
         const teamContainer = teamCarousel.parentElement;
         const prevBtn = teamContainer.querySelector('.prev');
         const nextBtn = teamContainer.querySelector('.next');
-        const cardWidth = teamCarousel.querySelector('.carousel-card').offsetWidth;
+        const cardWidth = teamCarousel.querySelector('.carousel-card').offsetWidth + 16; // Include gap
+
+        let scrollInterval;
+
+        const startScrolling = () => {
+            scrollInterval = setInterval(() => {
+                if (teamCarousel.scrollLeft >= (teamCarousel.scrollWidth / 2)) {
+                    teamCarousel.scrollLeft = 0;
+                }
+                teamCarousel.scrollBy({ left: 1, behavior: 'smooth' });
+            }, 20);
+        };
+
+        const stopScrolling = () => {
+            clearInterval(scrollInterval);
+        };
 
         prevBtn.addEventListener('click', () => {
             teamCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
@@ -118,13 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
             teamCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
         });
 
-        teamCarousel.addEventListener('mouseenter', () => {
-            teamCarousel.style.animationPlayState = 'paused';
-        });
+        teamContainer.addEventListener('mouseenter', stopScrolling);
+        teamContainer.addEventListener('mouseleave', startScrolling);
 
-        teamCarousel.addEventListener('mouseleave', () => {
-            teamCarousel.style.animationPlayState = 'running';
-        });
+        startScrolling();
     }
 
     // Menu Toggle
