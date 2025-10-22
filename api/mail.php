@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $recipient = "theproblemsolvers2.0@gmail.com"; 
+    $recipient = "theproblemsolvers2.0@gmail.com";
     $subject = "New contact from $name";
 
     $email_content = "Name: $name\n";
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Thank You! Your message has been sent.";
     } else {
         http_response_code(500);
-        echo "Oops! Something went wrong and we couldn't send your message.";
+        echo "Oops! Something went wrong and we couldn\'t send your message.";
     }
 
 } else {
