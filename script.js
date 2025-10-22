@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'proj1',
             image: 'assets/logo.png',
-            title: 'All-in-One Student App',
+            title: 'Skholar',
             description: 'An all-in-one student app designed to cater to the needs of students, providing them with resources, collaboration tools, and much more.',
             link: 'projects.html',
             playStore: '#',
@@ -99,6 +99,28 @@ document.addEventListener('DOMContentLoaded', () => {
             teamCard.addEventListener('click', () => openTeamModal(member));
             teamCarousel.appendChild(teamCard);
         });
+
+        // Team carousel specific logic
+        const teamContainer = teamCarousel.parentElement;
+        const prevBtn = teamContainer.querySelector('.prev');
+        const nextBtn = teamContainer.querySelector('.next');
+        const cardWidth = teamCarousel.querySelector('.carousel-card').offsetWidth;
+
+        prevBtn.addEventListener('click', () => {
+            teamCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            teamCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        teamCarousel.addEventListener('mouseenter', () => {
+            teamCarousel.style.animationPlayState = 'paused';
+        });
+
+        teamCarousel.addEventListener('mouseleave', () => {
+            teamCarousel.style.animationPlayState = 'running';
+        });
     }
 
     // Menu Toggle
@@ -144,22 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.close').forEach(button => {
         button.addEventListener('click', closeModal);
-    });
-
-    // Carousel Navigation
-    const carousels = document.querySelectorAll('.carousel-container');
-    carousels.forEach(container => {
-        const carousel = container.querySelector('.carousel');
-        const prevBtn = container.querySelector('.prev');
-        const nextBtn = container.querySelector('.next');
-        const cardWidth = carousel.querySelector('.carousel-card').offsetWidth;
-
-        prevBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-        });
-
-        nextBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        });
     });
 });

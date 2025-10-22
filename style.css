@@ -274,6 +274,19 @@ footer {
     display: none; /* Chrome, Safari and Opera */
 }
 
+#teamCarousel {
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-266px * 6));
+    }
+}
+
 .carousel-card {
     flex: 0 0 250px;
     background: #fff;
