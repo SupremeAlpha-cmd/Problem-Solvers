@@ -1,3 +1,6 @@
 <footer>
-  <p>&copy; 2025 The Problem Solvers. All rights reserved.</p>
+  <p>&copy; <span id="copyright-year"></span> The Problem Solvers. All rights reserved.</p>
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
 </footer>
