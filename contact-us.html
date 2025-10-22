@@ -44,7 +44,9 @@
   <div w3-include-html="footer.html"></div>
 
   <script src="include.js"></script>
-
+  <script src="script.js"></script>
+  <script src="init.js"></script>
+  
   <script>
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
@@ -66,8 +68,6 @@
           status.innerHTML = "<h2>Thank you!</h2><p>Your message has been sent successfully. We'll get back to you soon.</p>";
           status.style.display = 'block';
           form.reset(); // Clear the form fields
-          // Optional: hide the form after success
-          // form.style.display = 'none'; 
         } else {
           const responseData = await response.json();
           if (Object.hasOwn(responseData, 'errors')) {
