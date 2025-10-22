@@ -1,0 +1,11 @@
+[
+    {
+        "id": "proj1",
+        "image": "assets/logo.png",
+        "title": "Skholar",
+        "description": "An all-in-one student app designed to cater to the needs of students, providing them with resources, collaboration tools, and much more.",
+        "playStoreUrl": "https://play.google.com/store",
+        "appStoreUrl": "https://www.apple.com/app-store/",
+        "websiteUrl": "https://skholar.vercel.app"
+    }
+]

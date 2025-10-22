@@ -1,0 +1,80 @@
+[
+    {
+        "id": "member1",
+        "image": "assets/israel.jpg",
+        "name": "Israel Irene Idemudia",
+        "role": "Team Lead",
+        "intro": "The strategic mind behind our projects, Israel leads with a passion for backend development and data, always seeing the bigger picture.",
+        "bio": "From Edo state, Nigeria. A student based in benin city, A backend developer, A data Analyst, Backend engineer, A programmer and A Tech tutor",
+        "social": {
+            "linkedin": "#",
+            "github": "#",
+            "twitter": "#"
+        }
+    },
+    {
+        "id": "member2",
+        "image": "assets/javin.jpg",
+        "name": "Oreoluwa Ifedinma Chiazor",
+        "role": "Software Engineer",
+        "intro": "Our versatile problem-solver, Oreoluwa crafts seamless experiences across web and mobile platforms with his broad programming expertise.",
+        "bio": "From Delta state,Nigeria. A student based in benin city, A software engineer, A web developer,A flutter developer.",
+        "social": {
+            "linkedin": "#",
+            "github": "https://github.com/SupremeAlpha-cmd",
+            "twitter": "#"
+        }
+    },
+    {
+        "id": "member3",
+        "image": "assets/christabel.jpg",
+        "name": "Christabel Obianuju Ojekwu",
+        "role": "UI/UX Designer",
+        "intro": "The creative force of our team, Christabel blends artistry with user-centric design to create intuitive and beautiful digital experiences.",
+        "bio": "From Anambra state,Nigeria. A student based in benin city, A UI/UX Designer, A Graphic designer.",
+        "social": {
+            "linkedin": "#",
+            "github": "#",
+            "twitter": "#"
+        }
+    },
+    {
+        "id": "member4",
+        "image": "assets/kingsley.jpg",
+        "name": "Kingsley Ogedegbe",
+        "role": "Backend Developer",
+        "intro": "The architect of our digital backbone, Kingsley specializes in building the scalable and efficient server-side systems that power our apps.",
+        "bio": "From Edo state,Nigeria. A student based in benin city, A python programmer, A backend developer Skilled in Django and APIs.",
+        "social": {
+            "linkedin": "#",
+            "github": "#",
+            "twitter": "#"
+        }
+    },
+    {
+        "id": "member5",
+        "image": "assets/AKBAR 3.jpg",
+        "name": "Annabel Akbar Aigbe",
+        "role": "Web Developer",
+        "intro": "Our front-end specialist, Annabel brings designs to life by creating beautiful, responsive, and interactive websites that captivate users.",
+        "bio": "From Edo state benin city,Nigeria. A student based in benin city, A witer, Web developer, A graphic designer and A Research Analyst.",
+        "social": {
+            "linkedin": "#",
+            "github": "#",
+            "twitter": "#"
+        }
+    },
+    {
+        "id": "member6",
+        "image": "assets/STEPH 2.jpg",
+        "name": "Stephanie Odili Mordi",
+        "role": "Quality Assurance Analyst",
+        "intro": "Our guardian of quality, Stephanie meticulously tests our products to ensure they are bug-free, reliable, and meet the highest standards.",
+        "bio": "From Delta state,Nigeria. A student based in benin city, Quality assurance Analyst and A graphic designer.",
+        "social": {
+            "linkedin": "#",
+            "github": "#",
+            "twitter": "#"
+        }
+    }
+]

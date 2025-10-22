@@ -1,161 +1,161 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const projects = [
-        {
-            id: 'proj1',
-            image: 'assets/logo.png',
-            title: 'Skholar',
-            description: 'An all-in-one student app designed to cater to the needs of students, providing them with resources, collaboration tools, and much more.',
-            playStoreUrl: 'https://play.google.com/store',
-            appStoreUrl: 'https://www.apple.com/app-store/',
-            websiteUrl: 'https://skholar.vercel.app'
-        },
-       
-    ];
-
-    const teamMembers = [
-        {
-            id: 'member1',
-            image: 'assets/israel.jpg',
-            name: 'Israel Irene Idemudia',
-            role: 'Team Lead',
-            intro: 'The strategic mind behind our projects, Israel leads with a passion for backend development and data, always seeing the bigger picture.',
-            link: 'about.html#member1'
-        },
-        {
-            id: 'member2',
-            image: 'assets/javin.jpg',
-            name: 'Oreoluwa Ifedinma Chiazor',
-            role: 'Software Engineer',
-            intro: 'Our versatile problem-solver, Oreoluwa crafts seamless experiences across web and mobile platforms with her broad engineering expertise.',
-            link: 'about.html#member2'
-        },
-        {
-            id: 'member3',
-            image: 'assets/christabel.jpg',
-            name: 'Christabel Obianuju Ojekwu',
-            role: 'UI/UX Designer',
-            intro: 'The creative force of our team, Christabel blends artistry with user-centric design to create intuitive and beautiful digital experiences.',
-            link: 'about.html#member3'
-        },
-        {
-            id: 'member4',
-            image: 'assets/kingsley.jpg',
-            name: 'Kingsley Ogedegbe',
-            role: 'Backend Developer',
-            intro: 'The architect of our digital backbone, Kingsley specializes in building the scalable and efficient server-side systems that power our apps.',
-            link: 'about.html#member4'
-        },
-        {
-            id: 'member5',
-            image: 'assets/AKBAR 3.jpg',
-            name: 'Annabel Akbar Aigbe',
-            role: 'Web Developer',
-            intro: 'Our front-end specialist, Annabel brings designs to life by creating beautiful, responsive, and interactive websites that captivate users.',
-            link: 'about.html#member5'
-        },
-        {
-            id: 'member6',
-            image: 'assets/STEPH 2.jpg',
-            name: 'Stephanie Odili Mordi',
-            role: 'Quality Assurance Analyst',
-            intro: 'Our guardian of quality, Stephanie meticulously tests our products to ensure they are bug-free, reliable, and meet the highest standards.',
-            link: 'about.html#member6'
-        }
-    ];
-
+    // DOM Elements
     const projectsCarousel = document.getElementById('projectsCarousel');
     const teamCarousel = document.getElementById('teamCarousel');
     const projectsGrid = document.getElementById('projects-grid');
+    const teamGridContainer = document.getElementById('team-grid-container');
     const projectModal = document.getElementById('projectModal');
     const teamModal = document.getElementById('teamModal');
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
-    // Populate Projects Carousel
-    if (projectsCarousel) {
-        projects.forEach(project => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'carousel-card';
-            projectCard.dataset.project = project.id;
-            projectCard.innerHTML = `
-                <img src="${project.image}" alt="${project.title}">
-                <h3>${project.title}</h3>
-            `;
-            projectCard.addEventListener('click', () => openProjectModal(project));
-            projectsCarousel.appendChild(projectCard);
-        });
+    // Fetch and populate data
+    async function loadData() {
+        try {
+            const [projectsResponse, teamResponse] = await Promise.all([
+                fetch('projects.json').catch(err => console.warn('projects.json not found, skipping...', err)),
+                fetch('team.json').catch(err => console.warn('team.json not found, skipping...', err))
+            ]);
+
+            const projects = projectsResponse ? await projectsResponse.json() : [];
+            const teamMembers = teamResponse ? await teamResponse.json() : [];
+
+            // Populate UI elements based on available data
+            if (projects.length > 0) {
+                populateProjects(projects);
+            }
+            if (teamMembers.length > 0) {
+                populateTeam(teamMembers);
+                populateAboutTeam(teamMembers); 
+            }
+
+        } catch (error) {
+            console.error('Failed to load data:', error);
+        }
     }
 
-    // Populate Projects Grid
-    if (projectsGrid) {
-        projects.forEach(project => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-            projectCard.innerHTML = `
-                <img src="${project.image}" alt="${project.title}">
-                <div class="project-info">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <div class="download-buttons">
-                        <a href="${project.playStoreUrl}" class="btn playstore" target="_blank">Play Store</a>
-                        <a href="${project.appStoreUrl}" class="btn ios" target="_blank">App Store</a>
-                        <a href="${project.websiteUrl}" class="btn website" target="_blank">Website</a>
+    function populateAboutTeam(teamMembers) {
+        if (teamGridContainer) {
+            teamMembers.forEach(member => {
+                const memberDiv = document.createElement('div');
+                memberDiv.className = 'about-member';
+                memberDiv.id = member.id;
+                memberDiv.setAttribute('role', 'article');
+                memberDiv.setAttribute('aria-labelledby', `${member.id}-name`);
+
+                memberDiv.innerHTML = `
+                    <img src="${member.image}" alt="${member.name}">
+                    <div class="info">
+                        <h3 id="${member.id}-name">${member.name}</h3>
+                        <p class="role">${member.role}</p>
+                        <p>${member.bio}</p>
+                        <div class="social-links">
+                            <a href="${member.social.linkedin}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="${member.social.github}" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="${member.social.twitter}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
                     </div>
-                </div>
-            `;
-            projectsGrid.appendChild(projectCard);
-        });
+                `;
+                teamGridContainer.appendChild(memberDiv);
+            });
+        }
+    }
+
+    // Populate Projects (Carousel and Grid)
+    function populateProjects(projects) {
+        if (projectsCarousel) {
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'carousel-card';
+                projectCard.dataset.project = project.id;
+                projectCard.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}">
+                    <h3>${project.title}</h3>
+                `;
+                projectCard.addEventListener('click', () => openProjectModal(project));
+                projectsCarousel.appendChild(projectCard);
+            });
+        }
+
+        if (projectsGrid) {
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}">
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="download-buttons">
+                            <a href="${project.playStoreUrl}" class="btn playstore" target="_blank">Play Store</a>
+                            <a href="${project.appStoreUrl}" class="btn ios" target="_blank">App Store</a>
+                            <a href="${project.websiteUrl}" class="btn website" target="_blank">Website</a>
+                        </div>
+                    </div>
+                `;
+                projectsGrid.appendChild(projectCard);
+            });
+        }
     }
 
     // Populate Team Carousel
-    if (teamCarousel) {
-        const duplicatedTeamMembers = [...teamMembers, ...teamMembers];
+    function populateTeam(teamMembers) {
+        if (teamCarousel) {
+            const duplicatedTeamMembers = [...teamMembers, ...teamMembers];
 
-        duplicatedTeamMembers.forEach(member => {
-            const teamCard = document.createElement('div');
-            teamCard.className = 'carousel-card';
-            teamCard.dataset.member = member.id;
-            teamCard.innerHTML = `
-                <img src="${member.image}" alt="${member.name}">
-                <h3>${member.name}</h3>
-                <p>${member.role}</p>
-            `;
-            teamCard.addEventListener('click', () => openTeamModal(member));
-            teamCarousel.appendChild(teamCard);
-        });
+            duplicatedTeamMembers.forEach(member => {
+                const teamCard = document.createElement('div');
+                teamCard.className = 'carousel-card';
+                teamCard.dataset.member = member.id;
+                teamCard.innerHTML = `
+                    <img src="${member.image}" alt="${member.name}">
+                    <h3>${member.name}</h3>
+                    <p>${member.role}</p>
+                `;
+                teamCard.addEventListener('click', () => openTeamModal(member));
+                teamCarousel.appendChild(teamCard);
+            });
 
-        const teamContainer = teamCarousel.parentElement;
-        const prevBtn = teamContainer.querySelector('.prev');
-        const nextBtn = teamContainer.querySelector('.next');
-        const cardWidth = teamCarousel.querySelector('.carousel-card').offsetWidth + 16; // Include gap
+            const teamContainer = teamCarousel.parentElement;
+            const prevBtn = teamContainer.querySelector('.prev');
+            const nextBtn = teamContainer.querySelector('.next');
+            
+            let cardWidth = 0;
+            const firstCard = teamCarousel.querySelector('.carousel-card');
+            if (firstCard) {
+                cardWidth = firstCard.offsetWidth + 16; 
+            }
 
-        let scrollInterval;
+            let scrollInterval;
 
-        const startScrolling = () => {
-            scrollInterval = setInterval(() => {
-                if (teamCarousel.scrollLeft >= (teamCarousel.scrollWidth / 2)) {
-                    teamCarousel.scrollLeft = 0;
-                }
-                teamCarousel.scrollBy({ left: 1, behavior: 'smooth' });
-            }, 20);
-        };
+            const startScrolling = () => {
+                scrollInterval = setInterval(() => {
+                    if (teamCarousel.scrollLeft >= (teamCarousel.scrollWidth / 2)) {
+                        teamCarousel.scrollLeft = 0;
+                    }
+                    teamCarousel.scrollBy({ left: 1, behavior: 'smooth' });
+                }, 20);
+            };
 
-        const stopScrolling = () => {
-            clearInterval(scrollInterval);
-        };
+            const stopScrolling = () => {
+                clearInterval(scrollInterval);
+            };
 
-        prevBtn.addEventListener('click', () => {
-            teamCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-        });
+            if(prevBtn && nextBtn){
+                prevBtn.addEventListener('click', () => {
+                    teamCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                });
+    
+                nextBtn.addEventListener('click', () => {
+                    teamCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                });
+            }
 
-        nextBtn.addEventListener('click', () => {
-            teamCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        });
+            teamContainer.addEventListener('mouseenter', stopScrolling);
+            teamContainer.addEventListener('mouseleave', startScrolling);
 
-        teamContainer.addEventListener('mouseenter', stopScrolling);
-        teamContainer.addEventListener('mouseleave', startScrolling);
-
-        startScrolling();
+            startScrolling();
+        }
     }
 
     // Menu Toggle
@@ -172,7 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
             projectModal.querySelector('#projectImage').src = project.image;
             projectModal.querySelector('#projectTitle').textContent = project.title;
             projectModal.querySelector('#projectDesc').textContent = project.description;
-            projectModal.querySelector('#projectKnowMoreBtn').href = project.link;
+            const knowMoreBtn = projectModal.querySelector('#projectKnowMoreBtn');
+            if (knowMoreBtn) {
+                 knowMoreBtn.href = project.websiteUrl;
+            }
             projectModal.classList.add('show');
         }
     }
@@ -183,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             teamModal.querySelector('#modalName').textContent = member.name;
             teamModal.querySelector('#modalRole').textContent = member.role;
             teamModal.querySelector('#modalIntro').textContent = member.intro;
-            teamModal.querySelector('#knowMoreBtn').href = member.link;
+            teamModal.querySelector('#knowMoreBtn').href = `#`; // Link to about section
             teamModal.classList.add('show');
         }
     }
@@ -193,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (teamModal) teamModal.classList.remove('show');
     }
 
+    // Event listeners for closing modals
     window.addEventListener('click', (event) => {
         if (event.target === projectModal || event.target === teamModal) {
             closeModal();
@@ -202,4 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.close').forEach(button => {
         button.addEventListener('click', closeModal);
     });
+
+    // Load all data on startup
+    loadData();
 });
